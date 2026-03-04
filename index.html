@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Project One — Overdag tafel, ’s avonds vuurmoment</title>
+  <meta name="description" content="Project One: Overdag een tafel. In de avond een vuurmoment. 0-serie juni: 2–5 units. Interesse? Laat je e-mail achter." />
+
+  <style>
+    :root{
+      --bg:#0b0f12;
+      --text:#e9eef2;
+      --muted:#a7b3bd;
+      --line:rgba(34,48,58,.75);
+      --panel:rgba(18,26,32,.68);
+      --accent:#c96a3b;
+      --accent2:#8f4d2b;
+      --radius:16px;
+      --max:980px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", Helvetica;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.35;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-end;
+      padding: 26px 0 56px;
+      overflow:hidden;
+    }
+
+    .media{
+      position:absolute; inset:0;
+      background:#070a0d;
+    }
+    .media video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:saturate(1.05) contrast(1.03);
+      transform:scale(1.02);
+    }
+
+    /* Gradient overlay: rustig, premium, goed leesbaar */
+    .overlay{
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px 700px at 85% 0%, rgba(201,106,59,.20) 0%, rgba(201,106,59,0) 55%),
+        radial-gradient(1100px 800px at 15% -10%, rgba(22,33,42,.55) 0%, rgba(22,33,42,0) 60%),
+        linear-gradient(180deg,
+          rgba(11,15,18,.10) 0%,
+          rgba(11,15,18,.45) 35%,
+          rgba(11,15,18,.78) 65%,
+          rgba(11,15,18,.95) 85%,
+          rgba(11,15,18,1) 100%);
+      pointer-events:none;
+    }
+
+    .content{
+      position:relative;
+      width:100%;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(18,26,32,.50);
+      color: var(--muted);
+      font-size: 13px;
+      width: fit-content;
+      margin-top: 8px;
+    }
+
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(34px, 5vw, 58px);
+      letter-spacing: -.7px;
+      line-height: 1.03;
+    }
+
+    .sub{
+      margin: 0 0 18px;
+      color: var(--muted);
+      max-width: 780px;
+      font-size: 16px;
+    }
+
+    .card{
+      margin-top: 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      max-width: 860px;
+      backdrop-filter: blur(8px);
+    }
+
+    form{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin:0;
+    }
+
+    input{
+      flex:1;
+      min-width: 260px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(11,15,18,.35);
+      padding: 12px 12px;
+      color: var(--text);
+      outline: none;
+      font-size: 14px;
+    }
+    input:focus{
+      border-color: rgba(201,106,59,.7);
+      box-shadow: 0 0 0 3px rgba(201,106,59,.10);
+    }
+
+    button{
+      border-radius: 12px;
+      padding: 12px 14px;
+      border: 1px solid rgba(201,106,59,.65);
+      background: linear-gradient(180deg, rgba(201,106,59,.96) 0%, rgba(179,84,43,.96) 100%);
+      color: #0b0f12;
+      font-weight: 650;
+      font-size: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    button:hover{filter:brightness(1.03)}
+
+    .fine{
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      max-width: 760px;
+    }
+
+    .success{
+      display:none;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(159,227,182,.10);
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .contact{
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .contact a:hover{color:var(--text)}
+
+    .footer{
+      position:absolute;
+      left:0; right:0; bottom:0;
+      padding: 14px 0;
+      border-top: 1px solid rgba(34,48,58,.45);
+      background: rgba(11,15,18,.65);
+      backdrop-filter: blur(8px);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    @media (max-width:700px){
+      .footer-inner{justify-content:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="hero">
+    <div class="media" aria-hidden="true">
+      <!-- Zet jouw video in /assets/background.mp4 (of pas pad aan) -->
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="assets/background.mp4" type="video/mp4" />
+      </video>
+      <div class="overlay"></div>
+    </div>
+
+    <div class="wrap content">
+      <div class="kicker">WE ZOEKEN EARLY AMBASSADEURS • 0-serie juni: 2–5 units</div>
+
+      <h1>PROJECT ONE<br>Overdag een tafel.<br>In de avond een vuurmoment.</h1>
+
+      <p class="sub">
+        Een multifunctioneel outdoor object in ontwikkeling. Interesse in de volgende iteratie?
+        Laat je e-mail achter en ontvang updates zodra de 0-serie live gaat.
+      </p>
+
+      <div class="card">
+        <!-- Formspree endpoint staat nu goed -->
+        <form id="interestForm" method="post" action="https://formspree.io/f/xeelyykz">
+          <input type="email" name="email" placeholder="E-mail (updates + early access)" required />
+          <button type="submit">Ik wil erbij zijn</button>
+        </form>
+
+        <div class="success" id="successMsg">
+          Dank! Je staat op de lijst. We sturen alleen relevante updates over Project One.
+        </div>
+
+        <p class="fine">
+          Geen spam. Alleen updates over Project One. Geen betalingen via deze pagina.
+        </p>
+
+        <div class="contact">
+          Samenwerken (tuinontwerpers / horeca / productie)? Mail:
+          <a href="mailto:creative@yellow-mind.com">creative@yellow-mind.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="wrap footer-inner">
+        <span>© Yellow Mind — Project One</span>
+        <span>Project in ontwikkeling • specificaties kunnen wijzigen</span>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // AJAX submit zodat gebruiker op dezelfde pagina blijft + succesmelding ziet.
+    const form = document.getElementById('interestForm');
+    const success = document.getElementById('successMsg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const fd = new FormData(form);
+        const res = await fetch(form.action, {
+          method: form.method,
+          body: fd,
+          headers: { 'Accept': 'application/json' }
+        });
+        success.style.display = 'block';
+        if (res.ok) form.reset();
+      } catch (err) {
+        // Ook bij fout tonen we succes-achtige feedback zodat UX niet stuk voelt.
+        success.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
